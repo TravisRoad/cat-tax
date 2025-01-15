@@ -7,15 +7,19 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+section#step2_confirm_and_save > section > p {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.custom-dashed-hr {
+  border: none;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #3c333f,
+    #3c333f 10px,
+    transparent 5px,
+    transparent 20px
+  );
 }
