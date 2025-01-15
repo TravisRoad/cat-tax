@@ -115,9 +115,6 @@ const CatReceiptGenerator = () => {
     title: string;
     onClick: React.MouseEventHandler<HTMLDivElement>;
   }) {
-    console.log("map", progressMap);
-    console.log("index", props.index);
-
     return (
       <div
         className="flex flex-col justify-center items-center min-w-[7rem]"

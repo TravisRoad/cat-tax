@@ -15,9 +15,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          async
+          src="https://umami.lxythan2lxy.cn/script.js"
+          data-website-id="3eb5c5e9-a4ab-49f5-aa9e-7d47a4a55446"
+        ></script>
+      </head>
       <body className={clsx("antialiased", "md:max-w-3xl mx-auto")}>
-        {children}
-        <footer className="flex flex-col"></footer>
+        <div className="min-h-[95vh]">{children}</div>
+        <footer className="flex flex-col items-center justify-center py-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            alt="GitHub Repo stars"
+            src="https://img.shields.io/github/stars/TravisRoad/cat-tax"
+            className="w-20"
+          />
+        </footer>
       </body>
     </html>
   );
