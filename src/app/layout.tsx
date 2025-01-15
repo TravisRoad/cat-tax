@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import clsx from "clsx";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Cat Tax Receipt Generator",
@@ -39,6 +40,13 @@ export default function RootLayout({
           src="https://umami.lxythan2lxy.cn/script.js"
           data-website-id="3eb5c5e9-a4ab-49f5-aa9e-7d47a4a55446"
         ></script>
+        <Script id="clarity-script" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "puh05hpeg3");`}
+        </Script>
       </head>
       <body className={clsx("antialiased", "md:max-w-3xl mx-auto")}>
         <div className="min-h-[95vh]">{children}</div>
