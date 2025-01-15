@@ -237,7 +237,7 @@ const CatReceiptGenerator = () => {
                   Age
                 </label> */}
                 <input
-                  type="number"
+                  type="text"
                   id="age"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
