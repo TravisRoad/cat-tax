@@ -33,6 +33,7 @@ const CatReceiptGenerator = () => {
   // const downloadRef = useRef<HTMLAnchorElement>(null);
   const barcodeRef = useRef(null);
   const recipeRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [crop, setCrop] = useState<Crop>(); // 裁剪区域
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>();
 
@@ -53,6 +54,28 @@ const CatReceiptGenerator = () => {
       reader.readAsDataURL(e.target.files[0]);
     }
   }
+
+  const handlePaste = (event: ClipboardEvent) => {
+    const items = event.clipboardData?.items;
+    if (items) {
+      for (const item of items) {
+        if (item.type.indexOf("image") !== -1) {
+          const blob = item.getAsFile();
+          if (blob) {
+            setSrc(URL.createObjectURL(blob));
+
+            // 将图片绑定到 <input type="file">
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(blob);
+            if (fileInputRef.current) {
+              fileInputRef.current.files = dataTransfer.files;
+            }
+          }
+          break;
+        }
+      }
+    }
+  };
 
   function centerAspectCrop(
     mediaWidth: number,
@@ -109,6 +132,13 @@ const CatReceiptGenerator = () => {
       });
     }
   }, [progressMap]);
+
+  React.useEffect(() => {
+    document.addEventListener("paste", handlePaste);
+    return () => {
+      document.removeEventListener("paste", handlePaste);
+    };
+  }, []);
 
   function Step(props: {
     index: number;
@@ -194,12 +224,13 @@ const CatReceiptGenerator = () => {
               accept="image/*"
               onChange={onSelectFile}
               id="file-input"
+              ref={fileInputRef}
             />
             <label
               htmlFor="file-input"
               className="inline-block px-2 group-hover:cursor-pointer "
             >
-              upload your pet&apos;s photo
+              <strong>Upload</strong> or <strong>Cmd+V</strong>
             </label>
             <Icon
               icon="material-symbols:upload"
