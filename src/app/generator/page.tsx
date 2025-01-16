@@ -117,7 +117,7 @@ const CatReceiptGenerator = () => {
   }) {
     return (
       <div
-        className="flex flex-col justify-center items-center min-w-[7rem]"
+        className="flex flex-col justify-center items-center min-w-[7rem] cursor-pointer"
         onClick={props.onClick}
       >
         <div

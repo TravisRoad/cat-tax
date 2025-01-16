@@ -51,12 +51,14 @@ export default function RootLayout({
       <body className={clsx("antialiased", "md:max-w-3xl mx-auto")}>
         <div className="min-h-[95vh]">{children}</div>
         <footer className="flex flex-col items-center justify-center py-4">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt="GitHub Repo stars"
-            src="https://img.shields.io/github/stars/TravisRoad/cat-tax"
-            className="w-20"
-          />
+          <a href="https://github.com/TravisRoad/cat-tax" target="_blank">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt="GitHub Repo stars"
+              src="https://img.shields.io/github/stars/TravisRoad/cat-tax"
+              className="w-20"
+            />
+          </a>
         </footer>
       </body>
     </html>
